@@ -1,0 +1,107 @@
+{
+  "_comment": "Schema for the lifestyle/behavioral risk-prediction pipeline. Column names here must match the training CSV columns and the keys produced by app/lifestyle_predict.py:build_feature_row(). Edit this file (and re-train) if you swap in a real population dataset (e.g. NHANES Oral Health module, a national dental survey, or your own clinic intake form).",
+
+  "target_column": "caries_risk",
+
+  "numeric_features": [
+    {
+      "name": "age",
+      "label": "Age (years)",
+      "min": 1,
+      "max": 100,
+      "default": 30
+    },
+    {
+      "name": "brushing_freq_per_day",
+      "label": "Tooth brushing frequency (times/day)",
+      "min": 0,
+      "max": 5,
+      "default": 2
+    },
+    {
+      "name": "flossing_freq_per_week",
+      "label": "Flossing frequency (times/week)",
+      "min": 0,
+      "max": 14,
+      "default": 2
+    },
+    {
+      "name": "sugary_intake_per_day",
+      "label": "Sugary food/drink servings (per day)",
+      "min": 0,
+      "max": 15,
+      "default": 2
+    },
+    {
+      "name": "dental_visits_per_year",
+      "label": "Dental check-up visits (per year)",
+      "min": 0,
+      "max": 6,
+      "default": 1
+    },
+    {
+      "name": "years_since_last_visit",
+      "label": "Years since last dental visit",
+      "min": 0,
+      "max": 30,
+      "default": 1
+    }
+  ],
+
+  "categorical_features": [
+    {
+      "name": "sex",
+      "label": "Sex",
+      "choices": ["male", "female", "other"],
+      "default": "female"
+    },
+    {
+      "name": "fluoride_exposure",
+      "label": "Regular fluoride exposure (toothpaste/water/varnish)",
+      "choices": ["none", "low", "moderate", "high"],
+      "default": "moderate"
+    },
+    {
+      "name": "smoking_status",
+      "label": "Smoking status",
+      "choices": ["never", "former", "current"],
+      "default": "never"
+    },
+    {
+      "name": "snacking_between_meals",
+      "label": "Snacking between meals",
+      "choices": ["rarely", "sometimes", "often"],
+      "default": "sometimes"
+    },
+    {
+      "name": "dry_mouth_or_low_saliva",
+      "label": "Dry mouth / low saliva flow",
+      "choices": ["no", "yes"],
+      "default": "no"
+    },
+    {
+      "name": "family_history_caries",
+      "label": "Family history of cavities",
+      "choices": ["no", "yes"],
+      "default": "no"
+    },
+    {
+      "name": "diabetes_status",
+      "label": "Diabetes",
+      "choices": ["no", "yes"],
+      "default": "no"
+    },
+    {
+      "name": "orthodontic_appliance",
+      "label": "Braces / orthodontic appliance",
+      "choices": ["no", "yes"],
+      "default": "no"
+    },
+    {
+      "name": "socioeconomic_access",
+      "label": "Self-reported access to dental care",
+      "choices": ["limited", "moderate", "good"],
+      "default": "moderate"
+    }
+  ]
+}

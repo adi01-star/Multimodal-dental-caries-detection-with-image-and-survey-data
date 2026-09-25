@@ -18,8 +18,13 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the current directory contents into the container at /app
 COPY . .
 
-# Copy the model file into the container
-COPY data/best.pt /app/data/best.pt
+# NOTE: data/best.pt (image model), data/feature_schema.json, and
+# data/lifestyle_model.pkl are already included by "COPY . ." above.
+# Train the lifestyle model BEFORE building this image, or the Survey/
+# Combined tabs will report the model as unavailable (Image Only still
+# works):
+#   python training/generate_synthetic_lifestyle_data.py
+#   python training/train_lifestyle_model.py
 
 # Make port 7860 available to the world outside this container
 EXPOSE 7860

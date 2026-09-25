@@ -4,3 +4,9 @@ opencv-python
 pillow
 torch==2.4.0
 ultralytics
+
+# --- Added for the lifestyle/behavioral risk-prediction pipeline ---
+pandas
+scikit-learn
+xgboost
+joblib
