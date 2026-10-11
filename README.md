@@ -47,7 +47,7 @@ or treatment system.
 
 1. **Clone the repository** and open the project directory:
    ```bash
-   git clone https://github.com/rithikagirish/Multimodal-dental-caries-detection-with-image-and-survey-data.git
+   git clone https://github.com/adi01-star/Multimodal-dental-caries-detection-with-image-and-survey-data.git
    cd Multimodal-dental-caries-detection-with-image-and-survey-data
    ```
 
