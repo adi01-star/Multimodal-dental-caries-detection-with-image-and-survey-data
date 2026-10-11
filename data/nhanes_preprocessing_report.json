@@ -1,0 +1,17 @@
+{
+  "raw_count_den": 13772,
+  "raw_count_ohq": 14986,
+  "raw_count_diet": 14300,
+  "raw_count_demo": 15560,
+  "raw_count_smq": 11137,
+  "raw_count_diq": 14986,
+  "dentition_total": 13772,
+  "dentition_complete_count": 13273,
+  "examined_teeth_count": 28,
+  "target_positive_count": 2859,
+  "target_negative_count": 10414,
+  "target_prevalence": 0.21539968356814587,
+  "merge_with_demo_count": 13273,
+  "sugars_median_imputed": 92.14,
+  "carbs_median_imputed": 221.86
+}

@@ -11,3 +11,5 @@ pandas
 scikit-learn
 xgboost
 joblib
+pyreadstat
+requests

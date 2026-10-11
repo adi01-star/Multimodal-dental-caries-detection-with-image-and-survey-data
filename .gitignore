@@ -40,3 +40,9 @@ ENV/
 # OS files
 .DS_Store
 Thumbs.db
+
+# NHANES raw data
+data/nhanes_raw/
+*.xpt
+nhanes_ohxden_doc.html
+

@@ -1,107 +1,104 @@
 {
-  "_comment": "Schema for the lifestyle/behavioral risk-prediction pipeline. Column names here must match the training CSV columns and the keys produced by app/lifestyle_predict.py:build_feature_row(). Edit this file (and re-train) if you swap in a real population dataset (e.g. NHANES Oral Health module, a national dental survey, or your own clinic intake form).",
-
+  "_comment": "Schema for CDC NHANES 2017-March 2020 pre-pandemic lifestyle caries-risk pipeline. Defines feature fields, valid ranges, choices, and defaults matching Gradio UI.",
   "target_column": "caries_risk",
-
   "numeric_features": [
     {
       "name": "age",
       "label": "Age (years)",
       "min": 1,
-      "max": 100,
-      "default": 30
+      "max": 80,
+      "default": 35
     },
     {
-      "name": "brushing_freq_per_day",
-      "label": "Tooth brushing frequency (times/day)",
+      "name": "sugars_intake_g",
+      "label": "Daily sugar intake (grams/day)",
       "min": 0,
-      "max": 5,
-      "default": 2
+      "max": 400,
+      "default": 90
     },
     {
-      "name": "flossing_freq_per_week",
-      "label": "Flossing frequency (times/week)",
+      "name": "carbs_intake_g",
+      "label": "Daily carbohydrate intake (grams/day)",
       "min": 0,
-      "max": 14,
-      "default": 2
-    },
-    {
-      "name": "sugary_intake_per_day",
-      "label": "Sugary food/drink servings (per day)",
-      "min": 0,
-      "max": 15,
-      "default": 2
-    },
-    {
-      "name": "dental_visits_per_year",
-      "label": "Dental check-up visits (per year)",
-      "min": 0,
-      "max": 6,
-      "default": 1
-    },
-    {
-      "name": "years_since_last_visit",
-      "label": "Years since last dental visit",
-      "min": 0,
-      "max": 30,
-      "default": 1
+      "max": 600,
+      "default": 220
     }
   ],
-
   "categorical_features": [
     {
       "name": "sex",
       "label": "Sex",
-      "choices": ["male", "female", "other"],
+      "choices": [
+        "female",
+        "male"
+      ],
       "default": "female"
     },
     {
-      "name": "fluoride_exposure",
-      "label": "Regular fluoride exposure (toothpaste/water/varnish)",
-      "choices": ["none", "low", "moderate", "high"],
-      "default": "moderate"
+      "name": "last_dental_visit",
+      "label": "Last dental visit",
+      "choices": [
+        "within_6_months",
+        "6_to_12_months",
+        "1_to_2_years",
+        "2_to_3_years",
+        "3_to_5_years",
+        "more_than_5_years",
+        "never"
+      ],
+      "default": "within_6_months"
+    },
+    {
+      "name": "reason_last_dental_visit",
+      "label": "Reason for last dental visit",
+      "choices": [
+        "routine_checkup_or_cleaning",
+        "called_in_or_appointment",
+        "pain_or_problem",
+        "other_reason",
+        "never_visited"
+      ],
+      "default": "routine_checkup_or_cleaning"
+    },
+    {
+      "name": "unmet_dental_need_cost",
+      "label": "Needed dental care in past year but could not afford it",
+      "choices": [
+        "no",
+        "yes"
+      ],
+      "default": "no"
+    },
+    {
+      "name": "self_rated_oral_health",
+      "label": "Self-rated oral health (teeth and gums)",
+      "choices": [
+        "excellent",
+        "very_good",
+        "good",
+        "fair",
+        "poor"
+      ],
+      "default": "good"
     },
     {
       "name": "smoking_status",
       "label": "Smoking status",
-      "choices": ["never", "former", "current"],
+      "choices": [
+        "never",
+        "former",
+        "current"
+      ],
       "default": "never"
     },
     {
-      "name": "snacking_between_meals",
-      "label": "Snacking between meals",
-      "choices": ["rarely", "sometimes", "often"],
-      "default": "sometimes"
-    },
-    {
-      "name": "dry_mouth_or_low_saliva",
-      "label": "Dry mouth / low saliva flow",
-      "choices": ["no", "yes"],
-      "default": "no"
-    },
-    {
-      "name": "family_history_caries",
-      "label": "Family history of cavities",
-      "choices": ["no", "yes"],
-      "default": "no"
-    },
-    {
       "name": "diabetes_status",
-      "label": "Diabetes",
-      "choices": ["no", "yes"],
+      "label": "Doctor diagnosed diabetes",
+      "choices": [
+        "no",
+        "yes"
+      ],
       "default": "no"
-    },
-    {
-      "name": "orthodontic_appliance",
-      "label": "Braces / orthodontic appliance",
-      "choices": ["no", "yes"],
-      "default": "no"
-    },
-    {
-      "name": "socioeconomic_access",
-      "label": "Self-reported access to dental care",
-      "choices": ["limited", "moderate", "good"],
-      "default": "moderate"
     }
   ]
 }

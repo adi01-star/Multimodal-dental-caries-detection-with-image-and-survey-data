@@ -1,0 +1,118 @@
+[
+  {
+    "feature": "unmet_dental_need_cost_yes",
+    "importance": 0.17588123679161072
+  },
+  {
+    "feature": "unmet_dental_need_cost_no",
+    "importance": 0.16705700755119324
+  },
+  {
+    "feature": "reason_last_dental_visit_pain_or_problem",
+    "importance": 0.1181064248085022
+  },
+  {
+    "feature": "self_rated_oral_health_fair",
+    "importance": 0.07905779033899307
+  },
+  {
+    "feature": "self_rated_oral_health_poor",
+    "importance": 0.07028136402368546
+  },
+  {
+    "feature": "last_dental_visit_within_6_months",
+    "importance": 0.05592332035303116
+  },
+  {
+    "feature": "self_rated_oral_health_excellent",
+    "importance": 0.0520101860165596
+  },
+  {
+    "feature": "smoking_status_current",
+    "importance": 0.025935864076018333
+  },
+  {
+    "feature": "self_rated_oral_health_very_good",
+    "importance": 0.02475876919925213
+  },
+  {
+    "feature": "self_rated_oral_health_good",
+    "importance": 0.02473980188369751
+  },
+  {
+    "feature": "reason_last_dental_visit_called_in_or_appointment",
+    "importance": 0.015579051338136196
+  },
+  {
+    "feature": "age",
+    "importance": 0.014454404823482037
+  },
+  {
+    "feature": "last_dental_visit_6_to_12_months",
+    "importance": 0.013988458551466465
+  },
+  {
+    "feature": "last_dental_visit_never",
+    "importance": 0.013628004118800163
+  },
+  {
+    "feature": "reason_last_dental_visit_routine_checkup_or_cleaning",
+    "importance": 0.011869773268699646
+  },
+  {
+    "feature": "last_dental_visit_more_than_5_years",
+    "importance": 0.01151763740926981
+  },
+  {
+    "feature": "sex_male",
+    "importance": 0.01087784580886364
+  },
+  {
+    "feature": "diabetes_status_yes",
+    "importance": 0.010806174017488956
+  },
+  {
+    "feature": "diabetes_status_no",
+    "importance": 0.01065866183489561
+  },
+  {
+    "feature": "last_dental_visit_1_to_2_years",
+    "importance": 0.010543645359575748
+  },
+  {
+    "feature": "carbs_intake_g",
+    "importance": 0.01027925405651331
+  },
+  {
+    "feature": "reason_last_dental_visit_other_reason",
+    "importance": 0.009835897013545036
+  },
+  {
+    "feature": "sex_female",
+    "importance": 0.00983579270541668
+  },
+  {
+    "feature": "sugars_intake_g",
+    "importance": 0.009781367145478725
+  },
+  {
+    "feature": "smoking_status_never",
+    "importance": 0.009684060700237751
+  },
+  {
+    "feature": "last_dental_visit_3_to_5_years",
+    "importance": 0.009520049206912518
+  },
+  {
+    "feature": "smoking_status_former",
+    "importance": 0.008307312615215778
+  },
+  {
+    "feature": "reason_last_dental_visit_never_visited",
+    "importance": 0.007604519836604595
+  },
+  {
+    "feature": "last_dental_visit_2_to_3_years",
+    "importance": 0.007476301863789558
+  }
+]
