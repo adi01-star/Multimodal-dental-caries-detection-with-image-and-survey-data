@@ -28,7 +28,10 @@ from typing import Dict, Optional, Tuple
 import joblib
 import numpy as np
 
-from lifestyle_predict import risk_band
+try:
+    from app.lifestyle_predict import risk_band
+except ImportError:
+    from lifestyle_predict import risk_band
 
 
 def weighted_average_fusion(

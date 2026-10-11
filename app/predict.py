@@ -1,10 +1,48 @@
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
-from model import load_model
-import torch
-from torchvision.ops import nms
+try:
+    from app.model import load_model
+except ImportError:
+    from model import load_model
 
-model = load_model()
+import torch
+
+try:
+    from torchvision.ops import nms
+except ImportError:
+    def nms(boxes, scores, iou_threshold=0.8):
+        if len(boxes) == 0:
+            return torch.empty((0,), dtype=torch.long)
+        x1, y1, x2, y2 = boxes[:, 0], boxes[:, 1], boxes[:, 2], boxes[:, 3]
+        areas = (x2 - x1) * (y2 - y1)
+        order = scores.argsort(descending=True)
+        keep = []
+        while order.numel() > 0:
+            i = order[0].item()
+            keep.append(i)
+            if order.numel() == 1:
+                break
+            xx1 = torch.maximum(x1[i], x1[order[1:]])
+            yy1 = torch.maximum(y1[i], y1[order[1:]])
+            xx2 = torch.minimum(x2[i], x2[order[1:]])
+            yy2 = torch.minimum(y2[i], y2[order[1:]])
+            w = torch.clamp(xx2 - xx1, min=0.0)
+            h = torch.clamp(yy2 - yy1, min=0.0)
+            inter = w * h
+            ovr = inter / (areas[i] + areas[order[1:]] - inter)
+            ids = (ovr <= iou_threshold).nonzero().squeeze()
+            if ids.numel() == 0:
+                break
+            order = order[ids + 1]
+        return torch.tensor(keep, dtype=torch.long)
+
+_model = None
+
+def get_model():
+    global _model
+    if _model is None:
+        _model = load_model()
+    return _model
 
 def predict(image: Image.Image):
     """
@@ -26,7 +64,8 @@ def predict(image: Image.Image):
     image_np = np.array(image)
     
     # Perform inference with YOLOv8 model
-    results = model(image_np)
+    model_instance = get_model()
+    results = model_instance(image_np)
     
     # Convert the image back to a PIL image to draw bounding boxes
     img_with_boxes = image.copy()

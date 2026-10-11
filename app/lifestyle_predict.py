@@ -14,7 +14,10 @@ from typing import Dict, Tuple
 
 import pandas as pd
 
-from lifestyle_model import load_lifestyle_model, load_schema
+try:
+    from app.lifestyle_model import load_lifestyle_model, load_schema
+except ImportError:
+    from lifestyle_model import load_lifestyle_model, load_schema
 
 _bundle = None
 _schema = None

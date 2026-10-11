@@ -12,18 +12,32 @@ This is a screening / risk-assessment demo, not a diagnostic tool - the UI
 says so explicitly.
 """
 
+import os
+import sys
+
+# Ensure app directory is in sys.path
+APP_DIR = os.path.dirname(os.path.abspath(__file__))
+if APP_DIR not in sys.path:
+    sys.path.insert(0, APP_DIR)
+
 import gradio as gr
 
-from predict import predict
-from fusion import combine
-from lifestyle_model import load_schema
-
 try:
+    from app.predict import predict
+    from app.fusion import combine
+    from app.lifestyle_model import load_schema, load_lifestyle_model
+    from app.lifestyle_predict import predict_lifestyle_risk
+except ImportError:
+    from predict import predict
+    from fusion import combine
+    from lifestyle_model import load_schema, load_lifestyle_model
     from lifestyle_predict import predict_lifestyle_risk
 
+try:
+    load_lifestyle_model()
     LIFESTYLE_AVAILABLE = True
     LIFESTYLE_ERROR = None
-except FileNotFoundError as e:
+except Exception as e:
     # Lifestyle model hasn't been trained yet - the Image Only tab should
     # still work, so we degrade gracefully instead of crashing the app.
     LIFESTYLE_AVAILABLE = False
@@ -38,7 +52,9 @@ DISCLAIMER = (
 # ---------------------------------------------------------------------------
 # Tab 1: Image only
 # ---------------------------------------------------------------------------
-def gradio_predict_image(image: gr.Image):
+def gradio_predict_image(image):
+    if image is None:
+        return None, "Please upload a dental image."
     img_pil = image.convert("RGB")
     img_with_boxes, status, confidence = predict(img_pil)
     return img_with_boxes, f"{status} (confidence: {confidence:.2f})"
@@ -87,9 +103,12 @@ def gradio_predict_survey(*values):
 # ---------------------------------------------------------------------------
 # Tab 3: Combined (late fusion)
 # ---------------------------------------------------------------------------
-def gradio_predict_combined(image: gr.Image, image_weight: float, *values):
+def gradio_predict_combined(image, image_weight: float, *values):
     if not LIFESTYLE_AVAILABLE:
         return None, f"Lifestyle model not available: {LIFESTYLE_ERROR}"
+
+    if image is None:
+        return None, "Please upload a dental image."
 
     img_pil = image.convert("RGB")
     img_with_boxes, image_status, image_confidence = predict(img_pil)

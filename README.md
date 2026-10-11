@@ -22,7 +22,6 @@ or treatment system.
 ## Directory Structure
 
 ```
-Caries-Detection/
 ├── app/
 │   ├── gradio-app.py       # Web UI: Image Only / Survey Only / Combined tabs
 │   ├── model.py            # YOLO image-model loader
@@ -46,7 +45,11 @@ Caries-Detection/
 
 ## Setup
 
-1. **Clone the repository** and `cd` into `Caries-Detection/`.
+1. **Clone the repository** and open the project directory:
+   ```bash
+   git clone https://github.com/rithikagirish/Multimodal-dental-caries-detection-with-image-and-survey-data.git
+   cd Multimodal-dental-caries-detection-with-image-and-survey-data
+   ```
 
 2. **Install dependencies** (Python 3.10+):
    ```bash
